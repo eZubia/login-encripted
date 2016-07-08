@@ -1,0 +1,42 @@
+extends ./layouts/main.jade
+block contenido
+  div(class="container")
+    form(id="registrar", method="POST", action="/registrar")
+      div(class="row")
+        div(class="col-md-2")
+          label(for="email") Correo Electronico:
+        div(class="col-md-10")
+          input(class="form-control", type="text", name="email", id="email")
+      br
+      div(class="row")
+        div(class="col-md-2")
+          label(for="pass") Password:
+        div(class="col-md-10")
+          input(class="form-control", type="password", name="pass" id="pass")
+      br
+      div(class="row")
+        div(class="col-md-2")
+          label(for="pass") Confirmar Password:
+        div(class="col-md-10")
+          input(class="form-control", type="password", name="confirmarPassword" id="confirmarPassword")
+      br
+      div(class="row")
+        div(class="col-md-2")
+          label(for="pass") Nombre:
+        div(class="col-md-10")
+          input(class="form-control", type="text", name="nombre" id="nombre")
+      br
+      div(class="row")
+        div(class="col-md-2")
+          label(for="pass") Apellido Paterno:
+        div(class="col-md-10")
+          input(class="form-control", type="text", name="paterno" id="paterno")
+      br
+      div(class="row")
+        div(class="col-md-2")
+          label(for="pass") Apellido Materno:
+        div(class="col-md-10")
+          input(class="form-control", type="text", name="materno" id="materno")
+      br
+      div(class="row")
+        input(type="submit", value="Iniciar Sesión", class="btn btn-primary")

@@ -1,0 +1,16 @@
+extends ./layouts/main.jade
+block contenido
+  div(class="container")
+    form(id="login", method="POST", action="/login")
+      div(class="row")
+        div(class="col-md-2")
+          label(for="email") Email:
+        div(class="col-md-10")
+          input(class="form-control", type="text", name="email", id="email")
+      div(class="row")
+        div(class="col-md-2")
+          label(for="pass") Password:
+        div(class="col-md-10")
+          input(class="form-control", type="password", name="pass" id="pass")
+      div(class="row")
+        input(type="submit", value="Iniciar Sesión", class="btn btn-primary")
