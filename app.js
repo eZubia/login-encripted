@@ -33,4 +33,16 @@ app.post("/registrar", function(req,res){
   });
 });
 
+app.post('/login', function(req, res) {
+  Usuario.find({'email': req.body.email})
+  .exect(function(err, usuario){
+    if(usuario.validPassword(req.body.password)) {
+      res.send("Ha iniciado sesión....");
+    } else {
+      res.redirect("/");
+    }
+    }
+  });
+});
+
 app.listen(8081);
