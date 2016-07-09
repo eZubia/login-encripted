@@ -48,7 +48,7 @@ app.post('/login', function(req, res) {
   });
 });
 
-app.get('/login/:email/:password', function(req, res) {
+app.get('/webservice/:email/:password', function(req, res) {
   Usuario.findOne({'email': req.params.email})
   .exec(function(err, usuario){
     if(err) return res.json("{}");
