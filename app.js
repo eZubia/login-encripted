@@ -23,7 +23,6 @@ app.post("/registrar", function(req,res){
     materno: req.body.materno,
     email: req.body.email
   });
-
   usuarioNuevo.generateHash(req.body.password);
   usuarioNuevo.save(function (err) {
       if (err) {
@@ -34,14 +33,14 @@ app.post("/registrar", function(req,res){
 });
 
 app.post('/login', function(req, res) {
-  Usuario.find({'email': req.body.email})
-  .exect(function(err, usuario){
+  Usuario.findOne({'email': req.body.email})
+  .exec(function(err, usuario){
     if(usuario.validPassword(req.body.password)) {
       res.send("Ha iniciado sesión....");
     } else {
-      res.redirect("/");
+      res.send("No inicio sesión");
     }
-    }
+
   });
 });
 
