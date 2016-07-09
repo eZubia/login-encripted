@@ -51,7 +51,8 @@ app.post('/login', function(req, res) {
 app.get('/login/:email/:password', function(req, res) {
   Usuario.findOne({'email': req.params.email})
   .exec(function(err, usuario){
-    if(usuario.validPassword(req.params.password)) {
+    if(err) return res.json("{}");
+    if(usuario !== null && usuario.validPassword(req.params.password)) {
         return res.json(usuario);
     } else {
         return res.json("{}");
