@@ -16,7 +16,7 @@
     "url": "https://github.com/eZubia/login-encripted/issues"
   },
 "scripts": {
-    "start": "node app.js --prod"
+    "start": "node app.js"
   },
   "homepage": "https://github.com/eZubia/login-encripted#readme",
   "dependencies": {
