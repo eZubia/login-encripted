@@ -39,7 +39,7 @@ app.post("/registrar", function(req,res){
 app.post('/login', function(req, res) {
   Usuario.findOne({'email': req.body.email})
   .exec(function(err, usuario){
-    if(usuario.validPassword(req.body.password)) {
+    if(usuario !== null && usuario.validPassword(req.body.password)) {
       res.send("Ha iniciado sesión....");
     } else {
       res.send("No inicio sesión...");
