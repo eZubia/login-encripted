@@ -38,9 +38,20 @@ app.post('/login', function(req, res) {
     if(usuario.validPassword(req.body.password)) {
       res.send("Ha iniciado sesión....");
     } else {
-      res.send("No inicio sesión");
+      res.send("No inicio sesión...");
     }
 
+  });
+});
+
+app.get('/login/:email/:password', function(req, res) {
+  Usuario.findOne({'email': req.params.email})
+  .exec(function(err, usuario){
+    if(usuario.validPassword(req.params.password)) {
+        return res.json(usuario);
+    } else {
+        return res.json("{}");
+    }
   });
 });
 
