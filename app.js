@@ -3,8 +3,11 @@ var app = express();
 var bodyParser = require('body-parser');
 var bcrypt = require('bcrypt-nodejs');
 var Usuario = require('./models/usuarios').Usuario;
+var path = require('path');
 
-app.set("view engine", "jade");
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'jade');
+app.use("/public", express.static(__dirname + "/public"));
 app.use(bodyParser.json()); //Application JSON
 app.use(bodyParser.urlencoded({extended:true}));// Multipart con array
 
