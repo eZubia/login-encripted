@@ -4,6 +4,7 @@ var bodyParser = require('body-parser');
 var bcrypt = require('bcrypt-nodejs');
 var Usuario = require('./models/usuarios').Usuario;
 var path = require('path');
+var port = process.env.PORT || 8080;
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -58,4 +59,5 @@ app.get('/login/:email/:password', function(req, res) {
   });
 });
 
-app.listen(8081);
+
+app.listen(port);
