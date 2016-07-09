@@ -15,6 +15,9 @@
   "bugs": {
     "url": "https://github.com/eZubia/login-encripted/issues"
   },
+"scripts": {
+    "start": "node app.js --prod"
+  },
   "homepage": "https://github.com/eZubia/login-encripted#readme",
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
