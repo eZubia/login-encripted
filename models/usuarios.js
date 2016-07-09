@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/login-encripted');
+mongoose.connect('mongodb://root:1234@ds021884.mlab.com:21884/login-encripted');
 var bcrypt = require('bcrypt-nodejs');
 var Schema = mongoose.Schema;
 
