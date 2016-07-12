@@ -40,9 +40,11 @@ app.post('/login', function(req, res) {
   Usuario.findOne({'email': req.body.email})
   .exec(function(err, usuario){
     if(usuario !== null && usuario.validPassword(req.body.password)) {
-      res.send("Ha iniciado sesión....");
+      //res.send("Ha iniciado sesión....");
+      res.render('welcome');
     } else {
-      res.send("No inicio sesión...");
+      //res.send("No inicio sesión...");
+      res.render("no-sesion")
     }
 
   });

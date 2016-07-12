@@ -14,24 +14,7 @@ html(lang ='es' class="full")
     link(rel="stylesheet" href="public/css/the-big-picture.css")
     
     script(type="text/javascript", src="public/js/jquery-1.12.3.min.js")
-    
-  body
-    block contenido
-  
-    script.
-      $(window).load(function() {
-        $('#loginModal').modal('show');
-      });
-      
-      $(document).ready(function() {
 
-        $('#loginModal').on('hidden.bs.modal', function (e) {
-          window.location.href="/";
-        });
-      });
-
-    
-  script(type="text/javascript" src="public/js/angular.min.js")
-  script(type="text/javascript" src="public/js/app.js")
-  script(src="https://cdn.socket.io/socket.io-1.4.5.js")
-  script(type="text/javascript", src="public/js/bootstrap.min.js")
+body
+  div(class="alet alert-danger")
+    h1(style="color: #FFF;") No ha iniciado sesión
