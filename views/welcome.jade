@@ -1,5 +1,5 @@
 doctype html
-html(lang ='es' class="full")
+html(lang ='es' class="full" ng-app="appSockets")
   head
     title Repaso de NodeJS son Express
 
@@ -13,9 +13,9 @@ html(lang ='es' class="full")
 
     link(rel="stylesheet" href="public/css/the-big-picture.css")
     
-    script(type="text/javascript", src="public/js/jquery-1.12.3.min.js")
-
-body
+    
+    
+body(ng-controller="testCtrl")
   div(style="margin-left: 20px; padding: 10px; position: absolute;")
     h1(style="color: #FFF;") Bienvenidos
     h1(style="color: #FFF;") Ha iniciado sesión
@@ -24,4 +24,9 @@ body
     h3(style="color: #81F7F3;") Erik
     h3(style="color: #81F7F3;") José
     
-    a(href="/" class="btn btn-primary") Hasta la vista... baby 
+    {{mensajeMamalon}}
+    a(class="btn btn-primary" ng-click="enviarMensajeNuevo()") Hasta la vista... baby 
+script(type="text/javascript", src="public/js/jquery-1.12.3.min.js")
+script(src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js")
+script(src="/socket.io/socket.io.js")
+script(src="../public/app.js")

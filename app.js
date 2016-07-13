@@ -12,6 +12,31 @@ app.use("/public", express.static(__dirname + "/public"));
 app.use(bodyParser.json()); //Application JSON
 app.use(bodyParser.urlencoded({extended:true}));// Multipart con array
 
+var server = require('http').Server(app);
+var io = require("socket.io")(server);
+
+var mensajes = [{
+  id: 1,
+  texto: "AMO A RINGO STARR",
+  emisor: "José Luis"
+}];
+
+io.on('connect', function(socket) {
+  console.log("Se ha realizado una conexión...");
+  socket.emit('enviarMensajes', mensajes);
+
+  socket.on('echo', function(data) {
+    socket.emit('echo back', data);
+  });
+
+  socket.on('mensajeNuevo', function(data) {
+    console.log(data);
+    io.emit('enviarMensajes', "Este es un mensaje");
+  });
+});
+
+
+
 app.get("/", function(req,res){
   res.render("login");
 });
@@ -63,4 +88,4 @@ app.get('/webservice/:email/:password', function(req, res) {
 });
 
 
-app.listen(port);
+server.listen(port);
