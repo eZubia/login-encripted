@@ -26,6 +26,7 @@ io.on('connect', function(socket) {
   socket.emit('enviarMensajes', mensajes);
 
   socket.on('echo', function(data) {
+    console.log("AAAAA");
     socket.emit('echo back', data);
   });
 
