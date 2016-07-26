@@ -2,7 +2,7 @@
 module.exports = function(app) {
   var Usuario = require('../models/usuarios').Usuario;
   var bodyParser = require('body-parser');
-  var ToDo = require('../models/pendiente.js');
+  var Pendiente = require('../models/pendiente.js');
   app.use(bodyParser.json()); //Application JSON
   app.use(bodyParser.urlencoded({extended:true}));
 
@@ -31,15 +31,16 @@ module.exports = function(app) {
   };
 
   //Inserta una nueva tarea, petición POST
-  addTodo = function(req, res) {
+  addPendiente = function(req, res) {
   	console.log('POST');
   	console.log(req.body);
 
-  	var todo = new ToDo({
+  	var pendiente = new Pendiente({
   		descripcion:    req.body.descripcion,
   		fecha: 	  req.body.fecha,
   		prioridad:  req.body.prioridad,
   		terminada:   req.body.terminada,
+      usuario: mongoose.Types.ObjectId(req.body.usurioOwner)
   	});
 
   	todo.save(function(err) {
