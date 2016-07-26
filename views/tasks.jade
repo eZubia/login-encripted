@@ -7,3 +7,16 @@ block contenido
       li {{pendiente.fecha}}
       li {{pendiente.prioridad}}
       li {{pendiente.terminada}}
+
+  div(class="modal fade" tabindex="-1" role="dialog" id="loginModal")
+    div(class="modal-dialog modal-sm")
+      div(class="modal-content")
+        div(class="modal-header")
+          button(type="button" class="close" data-dismiss="modal" aria-label="Cerrar")
+            span(aria-hidden='true') &times;
+          h2(class="modal-title") Modal que pidio Eruik
+
+        div(class="modal-body")
+          h1 Cuerpo.
+        div(class="modal-footer")
+          p Pie.
