@@ -8,14 +8,14 @@ html(lang ='es' class="full" ng-app="appSockets")
     meta(http-equiv="X-UA-Compatible" content="IE=edge")
     meta(name="viewport" content="width=device-width, initial-scale=1")
     meta(name="apple-mobile-web-app-capable" content="yes")
-    
+
     link(rel="stylesheet" href="public/css/bootstrap.min.css" type="text/css")
     link(rel="stylesheet" href="public/fonts/font-awesome.min.css" type="text/css")
 
     link(rel="stylesheet" href="public/css/the-big-picture.css")
-    
-    
-    
+
+
+
 body(ng-controller="testCtrl")
   div(style="margin-left: 20px; padding: 10px; position: absolute;")
     h1(style="color: #FFF;") Bienvenidos
@@ -24,9 +24,9 @@ body(ng-controller="testCtrl")
     h3(style="color: #81F7F3;") Daniela
     h3(style="color: #81F7F3;") Erik
     h3(style="color: #81F7F3;") José
-    
+
     {{mensajeMamalon}}
-    a(class="btn btn-primary" ng-click="enviarMensajeNuevo()") Hasta la vista... baby 
+    a(class="btn btn-primary" ng-click="enviarMensajeNuevo()") Hasta la vista... baby
 script(type="text/javascript", src="public/js/jquery-1.12.3.min.js")
 script(src="../public/angular.min.js")
 script(src="/socket.io/socket.io.js")

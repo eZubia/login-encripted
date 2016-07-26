@@ -5,7 +5,8 @@ var bcrypt = require('bcrypt-nodejs');
 var Usuario = require('./models/usuarios').Usuario;
 var path = require('path');
 var port = process.env.PORT || 8080;
-var routes = require('./routes/routes')(app);
+var mongoose = require('mongoose');
+var routes = require('./routes/routes')(app, mongoose);
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');

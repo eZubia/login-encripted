@@ -1,5 +1,5 @@
 
-module.exports = function(app) {
+module.exports = function(app, mongoose) {
   var Usuario = require('../models/usuarios').Usuario;
   var bodyParser = require('body-parser');
   var Pendiente = require('../models/pendiente.js');
@@ -7,15 +7,12 @@ module.exports = function(app) {
   app.use(bodyParser.urlencoded({extended:true}));
 
   //Regresa todas las tareas de la BD, petición GET
-  findAllTodos = function(req, res) {
-  	ToDo.find(function(err, todos) {
-  		if(!err) {
-        console.log('GET /todos')
-  			res.send(todos);
-  		} else {
-  			console.log('Ha ocurrido un error al intentar obtener las tareas. ' + err);
-  		}
-  	});
+  findAllTodosForUser = function(req, res) {
+    Pendiente.find({"usuario":mongoose.Types.ObjectId(req.params.id)})
+    .exec(function(err, pendientes){
+      if(err) return res.json("{}");
+      return res.json(pendientes);
+    });
   };
 
   //Regresa una tarea con un id específico, petición GET
@@ -118,9 +115,17 @@ module.exports = function(app) {
     .exec(function(err, usuario){
       if(usuario !== null && usuario.validPassword(req.body.password)) {
         //res.send("Ha iniciado sesión....");
-        res.render('welcome');
+        console.log(usuario);
+        Pendiente.find({"usuario": mongoose.Types.ObjectId(usuario._id)})
+        .exec(function(err, pendientes){
+          if(err) res.redirect("/");
+          var pendientesJson = JSON.stringify(pendientes);
+          console.log("length");
+          console.log(pendientes.length);
+          res.render('tasks', {usuario:usuario._id, pendientes:pendientesJson});
+        });
+
       } else {
-        //res.send("No inicio sesión...");
         res.render("no-sesion")
       }
     });
@@ -140,9 +145,9 @@ module.exports = function(app) {
 
 
   //Rutas
-  app.get('/todos', findAllTodos);
+  app.get('/todos/user/:id', findAllTodosForUser);
   app.get('/todos/:id', findById);
-  app.post('/todos', addTodo);
+  app.post('/todos', addPendiente);
   app.put('/todos/:id', updateTodo);
   app.delete('/todos/:id', deleteTodo);
 

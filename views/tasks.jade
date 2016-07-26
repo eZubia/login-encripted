@@ -1,0 +1,9 @@
+extends ./layouts/main.jade
+block contenido
+  #{pendientes}
+  div(id="tasksDiv" ng-controller="taksController" ng-init="init('#{usuario}', '#{pendientes}' ? '#{pendientes}' : '{}')")
+    ul(ng-repeat="pendiente in pendientes track by $index")
+      li {{pendiente.descripcion}}
+      li {{pendiente.fecha}}
+      li {{pendiente.prioridad}}
+      li {{pendiente.terminada}}

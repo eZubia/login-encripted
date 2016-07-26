@@ -1,5 +1,5 @@
 doctype html
-html(lang ='es' class="full")
+html(lang ='es' class="full" ng-app="appTask")
   head
     title Repaso de NodeJS son Express
 
@@ -7,22 +7,22 @@ html(lang ='es' class="full")
     meta(http-equiv="X-UA-Compatible" content="IE=edge")
     meta(name="viewport" content="width=device-width, initial-scale=1")
     meta(name="apple-mobile-web-app-capable" content="yes")
-    
+
     link(rel="stylesheet" href="public/css/bootstrap.min.css" type="text/css")
     link(rel="stylesheet" href="public/fonts/font-awesome.min.css" type="text/css")
 
     link(rel="stylesheet" href="public/css/the-big-picture.css")
-    
+
     script(type="text/javascript", src="public/js/jquery-1.12.3.min.js")
-    
+
   body
     block contenido
-  
+
     script.
       $(window).load(function() {
         $('#loginModal').modal('show');
       });
-      
+
       $(document).ready(function() {
 
         $('#loginModal').on('hidden.bs.modal', function (e) {
@@ -30,7 +30,7 @@ html(lang ='es' class="full")
         });
       });
 
-    
+
   script(type="text/javascript" src="public/js/angular.min.js")
   script(type="text/javascript" src="public/js/app.js")
   script(src="https://cdn.socket.io/socket.io-1.4.5.js")
