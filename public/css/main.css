@@ -1,0 +1,94 @@
+body, .input-field > * {
+  font-family: "Roboto", sans-serif !important;
+}
+
+.login {
+  width: 350px;
+  background-color: #fff;
+  color: #354f00;
+  margin: 15px auto;
+  border-radius: 1%;
+}
+
+@media only screen and (max-width: 375px) {
+  .login {
+    width: 100%;
+    margin: 10px 0 0;
+  }
+}
+
+#login > .row {
+  margin-bottom: 0;
+}
+
+.center {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+
+/* label color */
+.login .input-field label {
+  color: #354f00;
+}
+/* label focus color */
+.login .input-field input[type=email]:focus + label, .login .input-field input[type=password]:focus + label, .login .input-field input[type=text]:focus + label {
+  color: #354f00;
+}
+/* label underline focus color */
+.login .input-field input[type=email]:focus, .login .input-field input[type=password]:focus, .login .input-field input[type=text]:focus {
+  border-bottom: 1px solid #354f00;
+  box-shadow: 0 1px 0 0 #354f00;
+}
+/* valid color */
+.login .input-field input[type=text].valid {
+  border-bottom: 1px solid #76ff03;
+  box-shadow: 0 1px 0 0 #000;
+}
+/* invalid color */
+.login .input-field input[type=text].invalid {
+  border-bottom: 1px solid #000;
+  box-shadow: 0 1px 0 0 #000;
+}
+
+.login .margin-15 {
+  margin-bottom: 15px !important;
+}
+
+.login .loguito {
+  color: #3e2723;
+  font-weight: bold;
+}
+
+.login .link {
+  color: #795548;
+  margin-left: 10px;
+}
+
+.login .link:link {
+  color: #64dd17;
+}
+
+.login .link:hover {
+  color: #3e2723;
+}
+
+.login .btn-block {
+  margin-bottom: 15px;
+}
+
+
+#registrarse {
+  width: 700px;
+  background-color: #fff;
+  color: #354f00;
+  margin: 15px auto;
+  border-radius: 1%;
+}
+
+@media only screen and (max-width: 700px) {
+  #registrarse {
+    width: 100%;
+    margin: 10px 0 0;
+  }
+}

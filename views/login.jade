@@ -1,41 +1,34 @@
 extends ./layouts/main.jade
 block contenido
-  div(class="modal fade" tabindex="-1" role="dialog" id="loginModal")
-    div(class="modal-dialog modal-sm")
-      div(class="modal-content")
-        div(class="modal-header")
-          button(type="button" class="close" data-dismiss="modal" aria-label="Cerrar")
-            span(aria-hidden='true') &times;
-          h2(class="modal-title") Login Encrypted
-          h4(class="modal-title") Seguridad en Redes y Tecnología Móvil
+  .login
+    .row
+      .col-xs-12.center
+        h4.loguito task
+          span.light-green-text.text-accent-4 Master
+      .col-xs-12.center
+        p Tus pendientes sólo cuando los necesitas
+    .row
+      .col-xs-12
+        h5 Iniciar sesión
+      .row
+        form.col.s12(id="login" method="POST" action="/login")
+          .row
+            .input-field.col.s12
+              input(type="email" class="validate" name="email" id="email")
+              label(for="email") Correo electrónico
+          .row
+            .input-field.col.s12
+              input(type="password" class="validate" name="password" id="password")
+              label(for="password") Contraseña
 
-        div(class="modal-body")
-          form(class="form-horizontal" id="login" method="POST", action="/login")
-            h3 Iniciar sesión
+          .row.margin-15
+            p.col.s12
+              input(type="checkbox" class="js-switch" id="recordar")
+              label(for="recordar") Recuérdame
 
-            div(class="form-group")
-              div(class="col-sm-12")
-                div(class="input-group")
-                  span(class="input-group-addon")
-                    i(class="glyphicon glyphicon-envelope")
-                  input(type="text" class="form-control" placeholder="Correo electrónico", name="email", id="email")
+          .row
+            .col.s12
+              input(type="submit" value="Aceptar" class="btn btn-block waves-effect waves-light light-green accent-4")
 
-            div(class="form-group")
-              div(class="col-sm-12")
-                div(class="input-group")
-                  span(class="input-group-addon")
-                    i(class="glyphicon glyphicon-lock")
-                  input(type="password" class="form-control" placeholder="Contraseña" name="password" id="password")
-
-            div(class="form-group")
-              div(class="col-sm-12")
-                input(type="checkbox" class="js-switch")
-                label(style="padding-left: 10px;") Recordar mis datos
-
-            div(class="form-group")
-              div(class="col-sm-12")
-                input(type="submit" value="Aceptar" class="btn btn-primary btn-block")
-
-          div(class="modal-footer")
-            a(href="/registrar")  Registrarse
-            |.
+        .col.s12
+          a.link(href="/registrar")  Registrarse
