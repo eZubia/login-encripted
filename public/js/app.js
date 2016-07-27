@@ -53,4 +53,8 @@ app.controller('taksController', ['$scope', '$http', function ($scope, $http) {
           //TODO:Error
           });
     }
+
+    $scope.crearNuevoPendiente = function() {
+      socket.emit('crearNuevoPendiente', $scope.nuevoPendiente);
+    }
 }]);
