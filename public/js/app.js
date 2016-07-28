@@ -61,5 +61,4 @@ app.controller('taksController', ['$scope', '$http', function ($scope, $http) {
     $scope.sendPendiente = function() {
       $scope.nuevoPendiente.idUsuario = $scope.idUsuario;
       socket.emit('crearNuevoPendiente', $scope.nuevoPendiente);
-    }
 }]);
