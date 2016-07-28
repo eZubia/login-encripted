@@ -137,3 +137,9 @@ nav .loguito {
   padding: 10px !important;
   height: 58px !important;
 }
+
+.btn-floating {
+  float: right;
+  bottom: 20px;
+  right: 20px;
+}
