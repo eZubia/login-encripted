@@ -57,8 +57,8 @@ app.controller('taksController', ['$scope', '$http', function ($scope, $http) {
     $scope.crearNuevoPendiente = function() {
       socket.emit('crearNuevoPendiente', $scope.nuevoPendiente);
     }
-
-    $sope.sendPost = function() {
+/*
+    $scope.sendPost = function() {
       var data = $.param({
         json: JSON.stringify({
           descripcion: $scope.descripcion,
@@ -71,4 +71,5 @@ app.controller('taksController', ['$scope', '$http', function ($scope, $http) {
         })
       });
     }
+    */
 }]);
