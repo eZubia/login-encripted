@@ -6,13 +6,14 @@ block contenido
         .card.white
           .card-content.brown-text.text-darken-4
             .row.date
-              a(href='javascript:;')
+              a( btn-flat ng-click="deletePendiente(pendiente._id)")
                 i.material-icons clear
               p {{pendiente.fecha}}
             p {{pendiente.descripcion}}
-          .card-action.rojo
-            a.waves-effect.waves-light.btn.light-green.accent-4.pull-right(href="javascript:;") Terminar
-
+          .card-action.rojo(ng-if="!pendiente.terminada")
+            a.waves-effect.waves-light.btn.light-green.accent-4.pull-right(ng-click="terminarPendiente(pendiente._id)") Terminar
+          .card-action.verde(ng-if="pendiente.terminada")
+            a.waves-effect.waves-light.btn.light-green.accent-4.pull-right(ng-if="pendiente.terminada") Terminada
     a.btn-floating.btn-large.waves-effect.waves-light.light-green.accent-4.modal-trigger(href="#nuevaModal")
       i.material-icons add
 
@@ -33,10 +34,10 @@ block contenido
                 label(for="fecha") Fecha:
                 input(type="date" class="form-control" ng-model="nuevoPendiente.fecha")
               div(class="form-group")
-                label(form="prioridad") Prioridad: 
+                label(form="prioridad") Prioridad:
                 input(type="text" class="form-control" ng-model="nuevoPendiente.prioridad")
-              a(href="#!" class="modal-action modal-close waves-effect waves-green btn-flat " ng-click="sendPendiente()") Agree
-          
+              a(href="#!" class="modal-action modal-close waves-effect waves-green btn-flat " ng-click="sendPendiente()") Agregar
+
   script.
     $(document).ready(function(){
       // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered

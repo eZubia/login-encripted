@@ -6,19 +6,16 @@ app.controller('taksController', ['$scope', '$http', function ($scope, $http) {
     $scope.pendientes = [];
     $scope.nuevoPendiente = new Object();
 
-    socket.on('sendMessages', function (data) {
-        $scope.messages = data.emitted.fulfill[0];
-        $scope.$apply();
-    });
-
     socket.on('recargarPendientes', function (data) {
         $scope.recargarPendientes();
         $scope.$apply();
     });
 
-    $scope.nuevoPendientes = function () {
-        socket.emit('nuevoPendiente', $scope.nuevoPendiente);
-    };
+
+    $scope.deletePendiente = function(idPendiente){
+      console.log(idPendiente);
+      socket.emit('deletePendiente', idPendiente);
+    }
 
     $scope.init = function(idUsuario, pendientes){
       $scope.idUsuario = idUsuario;
@@ -34,13 +31,15 @@ app.controller('taksController', ['$scope', '$http', function ($scope, $http) {
           });
     };
 
-    $scope.crearNuevoPendiente = function() {
-      socket.emit('crearNuevoPendiente', $scope.nuevoPendiente);
-    };
-
     $scope.sendPendiente = function() {
       console.log("AAA");
       $scope.nuevoPendiente.idUsuario = $scope.idUsuario;
       socket.emit('crearNuevoPendiente', $scope.nuevoPendiente);
     };
+
+    $scope.terminarPendiente = function(idPendiente){
+      console.log(idPendiente);
+      socket.emit('terminarPendiente', idPendiente);
+    }
+
 }]);

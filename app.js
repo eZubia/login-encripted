@@ -34,23 +34,45 @@ io.on('connect', function(socket) {
   });
 
   socket.on('crearNuevoPendiente', function(data) {
-    console.log("Esto mi amigo es un post");
-    console.log(data);
-        var newPendiente = new Pendiente({
-          descripcion: data.descripcion,
-          fecha: new Date(),
-          prioridad: data.prioridad,
-          terminada: false,
-          usuario: mongoose.Types.ObjectId(data.idUsuario)
-        });
-        newPendiente.save(function(err, obj){
-          if(err){
-            socket.emit("Ha ocurrido un error.");
-          } else if(obj) {
-            io.emit('recargarPendientes');
+    var newPendiente = new Pendiente({
+      descripcion: data.descripcion,
+      fecha: new Date(),
+      prioridad: data.prioridad,
+      terminada: false,
+      usuario: mongoose.Types.ObjectId(data.idUsuario)
+    });
+    newPendiente.save(function(err, obj){
+        if(err){
+          socket.emit("fatalError");
+        } else if(obj) {
+          io.emit('recargarPendientes');
+        }
+    });
+  });
+
+  socket.on('deletePendiente', function(idPendiente){
+    Pendiente.findById(idPendiente, function(err, todos) {
+  		todos.remove(function(err) {
+  			if(err) {
+  				socket.emit("fatalError");
+  			} else {
+  				io.emit('recargarPendientes');
+  			}
+  		})
+  	});
+  });
+
+  socket.on('terminarPendiente', function(idPendiente){
+    Pendiente.update({"_id": idPendiente},
+       {$set:{"terminada":true}}, function (err) {
+          if (err) {
+              socket.emit("fatalError");
+          } else {
+              io.emit('recargarPendientes');
           }
-        });
-      });
+    });
+  });
+
 });
 
 server.listen(port);
