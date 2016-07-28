@@ -2,6 +2,7 @@ body, .input-field > * {
   font-family: "Roboto", sans-serif !important;
 }
 
+/* Out system style */
 .login {
   width: 350px;
   background-color: #fff;
@@ -55,7 +56,7 @@ body, .input-field > * {
   margin-bottom: 15px !important;
 }
 
-.login .loguito {
+.loguito {
   color: #3e2723;
   font-weight: bold;
 }
@@ -91,4 +92,14 @@ body, .input-field > * {
     width: 100%;
     margin: 10px 0 0;
   }
+}
+
+/* Application style */
+.brand-logo {
+  padding-left: 10px !important;
+}
+
+nav .loguito {
+  color: #fff;
+  font-weight: bold;
 }
