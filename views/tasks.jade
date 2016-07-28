@@ -1,8 +1,8 @@
 extends ./layouts/application.jade
 block contenido
   div(id="tasksDiv" ng-controller="taksController" ng-init="init('#{usuario}', '#{pendientes}' ? '#{pendientes}' : '{}')")
-    .row(ng-repeat='pendiente in pendientes track by $index')
-      .col.s12.m6.l4
+    .row
+      .col.s12.m6.l4(ng-repeat='pendiente in pendientes track by $index')
         .card.white
           .card-content.brown-text.text-darken-4
             .row.date
@@ -16,27 +16,29 @@ block contenido
     a.btn-floating.btn-large.waves-effect.waves-light.light-green.accent-4.modal-trigger(href="#nuevaModal")
       i.material-icons add
 
-  div(class="modal fade" tabindex="-1" role="dialog" id="nuevaModal")
-    div(class="modal-dialog modal-sm")
-      div(class="modal-content")
-        div(class="modal-header")
-          button(type="button" class="close" data-dismiss="modal" aria-label="Cerrar")
-            span(aria-hidden='true') &times;
-          h2(class="modal-title") Modal
+    div(class="modal fade" tabindex="-1" id="nuevaModal")
+      div(class="modal-dialog modal-sm")
+        div(class="modal-content")
+          div(class="modal-header")
+            button(type="button" class="close" data-dismiss="modal" aria-label="Cerrar")
+              span(aria-hidden='true') &times;
+            h2(class="modal-title") Modal
 
-        div(class="modal-body" ng-controller="taskController")
-          form(role="form")
-            div(class="form-group")
-              label(for="descripcion") Descripción
-              input(type="text" class="form-control" ng-model="nuevoPendientes.descripcion")
-            div(class="form-group")
-              label(for="fecha") Fecha:
-              input(type="text" class="form-control" ng-model="nuevoPendientes.fecha")
-            div(class="form-group")
-              label(form="prioridad") Prioridad: 
-              input(type="text" class="form-control" ng-model="nuevoPendientes.prioridad")
-            button(type="submit" value="Guardar" ng-submit="sendPendiente()")
-            
-          h1 Cuerpo.
-        div(class="modal-footer")
-          p Pie.
+          div(class="modal-body")
+            form(role="form")
+              div(class="form-group")
+                label(for="descripcion") Descripción
+                input(type="text" class="form-control" ng-model="nuevoPendiente.descripcion")
+              div(class="form-group")
+                label(for="fecha") Fecha:
+                input(type="date" class="form-control" ng-model="nuevoPendiente.fecha")
+              div(class="form-group")
+                label(form="prioridad") Prioridad: 
+                input(type="text" class="form-control" ng-model="nuevoPendiente.prioridad")
+              a(href="#!" class="modal-action modal-close waves-effect waves-green btn-flat " ng-click="sendPendiente()") Agree
+          
+  script.
+    $(document).ready(function(){
+      // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+      $('.modal-trigger').leanModal();
+    });

@@ -21,22 +21,9 @@ html(lang ='es' class="full" ng-app="appTask")
   body
     block contenido
 
-    script.
-      $(window).load(function() {
-        $('#loginModal').modal('show');
-      });
-
-      $(document).ready(function() {
-
-        $('#loginModal').on('hidden.bs.modal', function (e) {
-          window.location.href="/";
-        });
-      });
-
 
   script(type="text/javascript" src="public/js/angular.min.js")
   script(type="text/javascript" src="public/js/app.js")
   script(src="https://cdn.socket.io/socket.io-1.4.5.js")
   script(type="text/javascript", src="public/js/bootstrap.min.js")
   script(type="text/javascript", src="public/js/materialize.min.js")
-  script(type="text/javascript", src="public/js/main.js")

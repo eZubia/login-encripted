@@ -33,28 +33,24 @@ io.on('connect', function(socket) {
     socket.emit('echo back', data);
   });
 
-  socket.on('mensajeNuevo', function(data) {
+  socket.on('crearNuevoPendiente', function(data) {
+    console.log("Esto mi amigo es un post");
     console.log(data);
         var newPendiente = new Pendiente({
           descripcion: data.descripcion,
-          fecha: Date() data.fecha,
+          fecha: new Date(),
           prioridad: data.prioridad,
           terminada: false,
-          usuario: mongose.Types.ObjectId(data.idUsuario)
+          usuario: mongoose.Types.ObjectId(data.idUsuario)
         });
         newPendiente.save(function(err, obj){
           if(err){
             socket.emit("Ha ocurrido un error.");
           } else if(obj) {
-            io.emit('updatePendientes');
+            io.emit('recargarPendientes');
           }
         });
       });
-  });
 });
-
-
-
-
 
 server.listen(port);

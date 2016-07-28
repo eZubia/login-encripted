@@ -8,7 +8,6 @@ html(lang ='es' class="full" ng-app="appTask")
     meta(name="viewport" content="width=device-width, initial-scale=1")
     meta(name="apple-mobile-web-app-capable" content="yes")
 
-    link(rel="stylesheet" href="public/css/bootstrap.min.css" type="text/css")
     link(rel="stylesheet" href="public/css/materialize.min.css")
     link(href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet")
     link(rel="stylesheet" href="public/css/main.css")
@@ -29,22 +28,8 @@ html(lang ='es' class="full" ng-app="appTask")
 
     block contenido
 
-    script.
-      $(window).load(function() {
-        $('#loginModal').modal('show');
-      });
-
-      $(document).ready(function() {
-
-        $('#loginModal').on('hidden.bs.modal', function (e) {
-          window.location.href="/";
-        });
-      });
-
 
   script(type="text/javascript" src="public/js/angular.min.js")
   script(type="text/javascript" src="public/js/app.js")
   script(src="https://cdn.socket.io/socket.io-1.4.5.js")
-  script(type="text/javascript", src="public/js/bootstrap.min.js")
   script(type="text/javascript", src="public/js/materialize.min.js")
-  script(type="text/javascript", src="public/js/main.js")
