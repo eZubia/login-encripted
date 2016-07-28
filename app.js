@@ -7,6 +7,7 @@ var path = require('path');
 var port = process.env.PORT || 8080;
 var mongoose = require('mongoose');
 var routes = require('./routes/routes')(app, mongoose);
+var Pendiente = require('./models/pendiente');
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -34,7 +35,21 @@ io.on('connect', function(socket) {
 
   socket.on('mensajeNuevo', function(data) {
     console.log(data);
-    io.emit('enviarMensajes', "Este es un mensaje");
+        var newPendiente = new Pendiente({
+          descripcion: data.descripcion,
+          fecha: Date() data.fecha,
+          prioridad: data.prioridad,
+          terminada: false,
+          usuario: mongose.Types.ObjectId(data.idUsuario)
+        });
+        newPendiente.save(function(err, obj){
+          if(err){
+            socket.emit("Ha ocurrido un error.");
+          } else if(obj) {
+            io.emit('updatePendientes');
+          }
+        });
+      });
   });
 });
 

@@ -27,9 +27,7 @@ block contenido
             div(class="form-group")
               label(form="prioridad") Prioridad: 
               input(type="text" class="form-control" ng-model="nuevoPendientes.prioridad")
-            div(class="form-group")
-              input(type="checkbox" ng-model="nuevoPendientes.terminada") Terminada
-            button(type="submit" value="Guardar" ng-submit="sendPost()")
+            button(type="submit" value="Guardar" ng-submit="sendPendiente()")
             
           h1 Cuerpo.
         div(class="modal-footer")
