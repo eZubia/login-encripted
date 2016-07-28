@@ -58,6 +58,10 @@ body, .input-field > * {
 
 .loguito {
   color: #3e2723;
+  font-weight: initial;
+}
+
+.loguito > span {
   font-weight: bold;
 }
 
@@ -101,5 +105,35 @@ body, .input-field > * {
 
 nav .loguito {
   color: #fff;
-  font-weight: bold;
+}
+
+.date > p {
+  font-family: "Roboto Condensed";
+  float: right;
+  font-size: 12px;
+}
+
+.date > a {
+  color: #64dd17;
+}
+
+.rojo {
+  border-top: 2px solid #d32f2f !important;
+}
+
+.naranja {
+  border-top: 2px solid #ffb74d !important;
+}
+
+.amarillo {
+  border-top: 2px solid #fff176 !important;
+}
+
+.verde {
+  border-top: 2px solid #354f00 !important;
+}
+
+.card-action {
+  padding: 10px !important;
+  height: 58px !important;
 }
