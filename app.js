@@ -34,6 +34,7 @@ io.on('connect', function(socket) {
   });
 
   socket.on('crearNuevoPendiente', function(data) {
+      console.log(data.descripcion);
     var newPendiente = new Pendiente({
       descripcion: data.descripcion,
       fecha: new Date(),
@@ -43,12 +44,39 @@ io.on('connect', function(socket) {
     });
     newPendiente.save(function(err, obj){
         if(err){
+            console.log(err);
           socket.emit("fatalError");
         } else if(obj) {
+            console.log("Si guarde");
           io.emit('recargarPendientes');
+        } else {
+            console.log(" Que pedo");
         }
     });
   });
+
+    socket.on('crearNuevoPendienteMovil', function(data) {
+        data = JSON.parse(data);
+        var newPendiente = new Pendiente({
+            descripcion: data.descripcion,
+            fecha: new Date(),
+            prioridad: data.prioridad,
+            terminada: false,
+            usuario: mongoose.Types.ObjectId(data.idUsuario)
+        });
+        console.log(" AAAAA")
+        newPendiente.save(function(err, obj){
+            if(err){
+                console.log(err);
+                socket.emit("fatalError");
+            } else if(obj) {
+                console.log("Si guarde");
+                io.emit('recargarPendientes');
+            } else {
+                console.log(" Que pedo");
+            }
+        });
+    });
 
   socket.on('deletePendiente', function(idPendiente){
     Pendiente.findById(idPendiente, function(err, todos) {
